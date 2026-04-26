@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lab5-fastapi
+  labels:
+    project: lab5-fastapi
+    environment: learning
