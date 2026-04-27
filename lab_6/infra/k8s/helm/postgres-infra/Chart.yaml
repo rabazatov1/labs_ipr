@@ -1,0 +1,6 @@
+apiVersion: v2
+name: postgres-infra
+description: PostgreSQL infrastructure chart for Lab 6
+type: application
+version: 0.1.0
+appVersion: "15"

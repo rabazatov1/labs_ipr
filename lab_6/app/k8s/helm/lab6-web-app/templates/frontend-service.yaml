@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab6-frontend
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: lab6-web-app
+    component: frontend
+    {{- include "lab6-web-app.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.frontend.service.type }}
+  selector:
+    app: lab6-web-app
+    component: frontend
+  ports:
+    - name: http
+      port: {{ .Values.frontend.service.port }}
+      targetPort: 80
+      {{- if eq .Values.frontend.service.type "NodePort" }}
+      nodePort: {{ .Values.frontend.service.nodePort }}
+      {{- end }}

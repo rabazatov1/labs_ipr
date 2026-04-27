@@ -1,0 +1,14 @@
+environment: dev
+
+password: "lab6-dev-password"
+
+persistence:
+  size: 1Gi
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "128Mi"
+  limits:
+    cpu: "300m"
+    memory: "384Mi"

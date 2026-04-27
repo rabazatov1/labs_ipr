@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа 6: FastAPI и PostgreSQL</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="card hero">
+        <p class="eyebrow">Инструменты промышленной разработки</p>
+        <h1 id="app-title">Лабораторная работа 6: Kubernetes</h1>
+        <p class="lead">
+          Клиентская часть на чистом JavaScript обращается к серверной части на
+          FastAPI, а сервер получает строку подключения к PostgreSQL через `Secret`.
+        </p>
+        <div class="actions">
+          <button id="load-button" type="button">Проверить сервер</button>
+          <span id="status-badge" class="badge">Ожидание запроса</span>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Что показывает страница</h2>
+          <ul>
+            <li>Доступность серверной части через сервис Kubernetes.</li>
+            <li>Имя pod, из которого пришёл ответ.</li>
+            <li>Факт загрузки секрета и окружения из ConfigMap/Secret.</li>
+            <li>Статус конфигурации и доступности PostgreSQL.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Текущий API URL</h2>
+          <code id="api-url"></code>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Ответ сервера</h2>
+        <pre id="response-box">Нажми кнопку «Проверить сервер».</pre>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

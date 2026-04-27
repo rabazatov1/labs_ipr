@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab6-frontend
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      nodePort: 30800
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab6-backend
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+      nodePort: 30801

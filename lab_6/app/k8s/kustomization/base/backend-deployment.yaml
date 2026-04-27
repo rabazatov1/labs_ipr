@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab6-backend
+  labels:
+    app: lab6-web-app
+    component: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lab6-web-app
+      component: backend
+  template:
+    metadata:
+      labels:
+        app: lab6-web-app
+        component: backend
+    spec:
+      containers:
+        - name: backend
+          image: lab6-backend:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              name: http
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: lab6-app-config
+                  key: APP_ENV
+            - name: APP_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: lab6-app-config
+                  key: APP_VERSION
+            - name: DEMO_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: lab6-app-secret
+                  key: demo-api-key
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: lab6-app-secret
+                  key: database-url
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "400m"
+              memory: "384Mi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 5

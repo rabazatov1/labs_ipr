@@ -1,0 +1,26 @@
+environment: dev
+
+imagePullPolicy: Never
+
+config:
+  appTitle: "Лабораторная работа 6 DEV: FastAPI и PostgreSQL"
+  appEnv: "разработка"
+
+secrets:
+  demoApiKey: "lab6-dev-demo-key"
+
+backend:
+  replicas: 1
+  service:
+    type: NodePort
+    nodePort: 30802
+
+frontend:
+  replicas: 1
+  service:
+    type: NodePort
+    nodePort: 30803
+
+database:
+  host: "postgres-0.postgres"
+  password: "lab6-dev-password"

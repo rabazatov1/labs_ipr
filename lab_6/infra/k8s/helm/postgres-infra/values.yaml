@@ -1,0 +1,30 @@
+environment: ""
+
+fullnameOverride: postgres
+
+image:
+  repository: postgres
+  tag: "15-alpine"
+  pullPolicy: IfNotPresent
+
+auth:
+  username: lab6_user
+  database: lab6_app
+
+password: "changeme"
+
+persistence:
+  enabled: true
+  size: 2Gi
+  storageClass: ""
+
+service:
+  port: 5432
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"

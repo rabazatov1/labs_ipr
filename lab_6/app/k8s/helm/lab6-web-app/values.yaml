@@ -1,0 +1,57 @@
+environment: ""
+
+imagePullPolicy: IfNotPresent
+
+labels:
+  course.lab/work: lab6
+
+config:
+  appTitle: "Лабораторная работа 6: Kustomize, Helm и PostgreSQL"
+  apiBaseUrl: ""
+  appVersion: "2.0.0"
+  appEnv: ""
+
+secrets:
+  demoApiKey: "lab6-demo-key"
+
+backend:
+  image:
+    repository: lab6-backend
+    tag: "1.0.0"
+  replicas: 2
+  service:
+    type: ClusterIP
+    port: 8000
+    nodePort: null
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "400m"
+      memory: "384Mi"
+
+frontend:
+  image:
+    repository: lab6-frontend
+    tag: "1.0.0"
+  replicas: 2
+  service:
+    type: ClusterIP
+    port: 80
+    nodePort: null
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "64Mi"
+    limits:
+      cpu: "200m"
+      memory: "192Mi"
+
+database:
+  url: ""
+  host: "postgres-0.postgres"
+  port: 5432
+  name: "lab6_app"
+  user: "lab6_user"
+  password: "lab6-dev-password"

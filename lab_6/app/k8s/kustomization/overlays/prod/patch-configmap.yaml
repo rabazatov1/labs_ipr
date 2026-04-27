@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lab6-app-config
+data:
+  APP_ENV: "продакшен"
+  config.js: |
+    window.APP_CONFIG = {
+      APP_TITLE: "Лабораторная работа 6 PROD: FastAPI и PostgreSQL",
+      API_BASE_URL: ""
+    };

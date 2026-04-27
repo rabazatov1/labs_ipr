@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lab6-app-config
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "lab6-web-app.labels" . | nindent 4 }}
+data:
+  APP_ENV: {{ (.Values.config.appEnv | default .Values.environment | default "base") | quote }}
+  APP_VERSION: {{ .Values.config.appVersion | quote }}
+  config.js: |
+    window.APP_CONFIG = {
+      APP_TITLE: {{ .Values.config.appTitle | quote }},
+      API_BASE_URL: {{ .Values.config.apiBaseUrl | quote }}
+    };
