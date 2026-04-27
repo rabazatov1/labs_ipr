@@ -12,7 +12,8 @@ resources:
 patches:
   - path: patch-backend.yaml
   - path: patch-frontend.yaml
-  - path: patch-services.yaml
+  - path: patch-frontend-service.yaml
+  - path: patch-backend-service.yaml
   - path: patch-configmap.yaml
 
 labels:
