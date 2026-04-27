@@ -1,0 +1,33 @@
+environment: prod
+
+config:
+  appTitle: "Лабораторная работа 7 PROD: Prometheus, Grafana и Tempo"
+  appEnv: "продакшен"
+  otelExporterOtlpEndpoint: "http://tempo.observability.svc.cluster.local:4318"
+  otelServiceName: "lab7-backend"
+
+secrets:
+  demoApiKey: "REPLACE_WITH_SECRET_FROM_CI"
+
+backend:
+  replicas: 2
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "256Mi"
+    limits:
+      cpu: "600m"
+      memory: "512Mi"
+
+frontend:
+  replicas: 2
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "300m"
+      memory: "256Mi"
+
+database:
+  url: "postgres://lab6_user:REPLACE_WITH_SECRET_FROM_CI@postgres-0.postgres.lab6-data.svc.cluster.local:5432/lab6_app?sslmode=disable"

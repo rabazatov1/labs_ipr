@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: lab7-backend
+  labels:
+    app: lab7-web-app
+    component: backend
+spec:
+  selector:
+    matchLabels:
+      app: lab7-web-app
+      component: backend
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
+      scrapeTimeout: 10s

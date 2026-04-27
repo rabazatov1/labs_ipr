@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа 7: Observability</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="card hero">
+        <p class="eyebrow">Инструменты промышленной разработки</p>
+        <h1 id="app-title">Лабораторная работа 7: Observability</h1>
+        <p class="lead">
+          Эта страница вызывает диагностический API, а backend публикует метрики
+          Prometheus и может отправлять трейсы в Grafana Tempo по OTLP.
+        </p>
+        <div class="actions">
+          <button id="load-button" type="button">Сформировать отчёт</button>
+          <span id="status-badge" class="badge">Ожидание запроса</span>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Что показывает страница</h2>
+          <ul>
+            <li>Работу диагностического API `/api/stats`.</li>
+            <li>Счётчик бизнес-метрики сформированных отчётов.</li>
+            <li>Статус конфигурации трейсинга и доступности PostgreSQL.</li>
+            <li>Готовность backend к scrape по `/metrics`.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Текущий API URL</h2>
+          <code id="api-url"></code>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Ответ сервера</h2>
+        <pre id="response-box">Нажми кнопку «Сформировать отчёт».</pre>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

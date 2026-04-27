@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lab7-app-config
+data:
+  APP_ENV: "base"
+  APP_VERSION: "3.0.0"
+  OTEL_EXPORTER_OTLP_ENDPOINT: ""
+  OTEL_SERVICE_NAME: "lab7-backend"
+  config.js: |
+    window.APP_CONFIG = {
+      APP_TITLE: "Лабораторная работа 7: Prometheus, Grafana и Tempo",
+      API_BASE_URL: ""
+    };

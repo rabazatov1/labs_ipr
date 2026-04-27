@@ -1,0 +1,28 @@
+environment: dev
+
+imagePullPolicy: Never
+
+config:
+  appTitle: "Лабораторная работа 7 DEV: Prometheus, Grafana и Tempo"
+  appEnv: "разработка"
+  otelExporterOtlpEndpoint: "http://tempo.observability.svc.cluster.local:4318"
+  otelServiceName: "lab7-backend"
+
+secrets:
+  demoApiKey: "lab7-dev-demo-key"
+
+backend:
+  replicas: 1
+  service:
+    type: NodePort
+    nodePort: 30807
+
+frontend:
+  replicas: 1
+  service:
+    type: NodePort
+    nodePort: 30806
+
+database:
+  host: "postgres-0.postgres.lab6-demo.svc.cluster.local"
+  password: "lab6-dev-password"
